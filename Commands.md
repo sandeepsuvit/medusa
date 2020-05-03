@@ -1,5 +1,7 @@
 ## Docker build command (used to build the container in the current location specified by “.”)
-`sudo docker build --no-cache -t springio/medusa .`
+`sudo docker build --no-cache -t springio/medusa --rm=true .`
+
+The `-t` option will give the image its name and `--rm=true` will remove intermediate images after it has been built successfully. The last character in this shell command is a dot, acting as a build-directory argument.
 
 ## Docker run command
 `sudo docker run -d –name medusa -p 8080:8080 springio/medusa`
@@ -64,3 +66,9 @@ Remove selected volume
 
 Remove all unused volume
 `docker volume prune`
+
+# Docker compose
+- [Docker compose for spring boot] https://www.baeldung.com/dockerizing-spring-boot-application
+- [Spring profiles] http://www.littlebigextra.com/use-spring-profiles-docker-containers/
+- [Executing shell scripts] https://stackoverflow.com/questions/54241346/switching-spring-profile-based-on-docker-environment-variable-does-not-work
+- [Sample docker compose file] https://github.com/vaneetkataria/MicroServices/blob/master/docker-compose.yml

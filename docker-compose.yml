@@ -1,0 +1,32 @@
+version: '3.3'
+services:
+    medusa-service:
+        # This is same as to using --name
+        container_name: medusa
+        # build: 
+        #     context: .
+        #     # File used for the build
+        #     dockerfile: Dockerfile
+        build: .
+        # This is the image name which is used in build -t
+        image: springio/medusa:latest
+        # This is to specify which profile is used to run the jar file
+        environment: 
+            - SPRING_PROFILES_ACTIVE=prod
+        # Specifies the storage volume
+        volumes: 
+            - /Users/USERNAME/Documents/temp/docker:/temp
+        
+            # The new volumes key mounts the project directory (current directory) 
+        # on the host to /code inside the container, allowing you to modify the 
+        # code on the fly, without having to rebuild the image. The environment 
+        # key sets the FLASK_ENV environment variable, which tells flask run to 
+        # run in development mode and reload the code on change. This mode 
+        # should only be used in development.
+        # volumes:
+        #     - .:/code
+
+        # Ports that is exposed
+        ports: 
+            - 8080:8080
+        
